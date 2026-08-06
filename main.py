@@ -4,7 +4,12 @@ def validar_diretorio(pasta: Path) -> None:
     """Valida se a pasta de entrada existe e é um diretório."""
     if not pasta.exists() or not pasta.is_dir():
         raise FileNotFoundError(f"Pasta de entrada não encontrada: {pasta.resolve()}") 
-    
+
+def listar_arquivos(pasta: Path) -> list:
+    """Lista os arquivos contidos em um diretório."""
+    arquivos = [str(arquivo) for arquivo in pasta.iterdir() if arquivo.is_file()]
+    return arquivos
+
 def main() -> None:
     """Ponto de entrada da automação."""
     print("Automação iniciada com sucesso!")
@@ -15,11 +20,21 @@ def main() -> None:
     
     #Validar se a pasta de entrada existe
     try:
-        validar_diretorio(pasta_entrada)
+        validar_diretorio(pasta=pasta_entrada)
         print("Pasta validada. Continuando automação...")
     except FileNotFoundError as erro:
         print(f"Erro: {erro}")
         raise
+
+    #Listar arquivos
+    arquivos = listar_arquivos(pasta=pasta_entrada)
+
+    if not arquivos:
+        print("Não há arquivos para processar.")
+        return
+
+    for arquivo in arquivos:
+        print(arquivo)
 
 if __name__ == "__main__":
     main()
