@@ -1,8 +1,15 @@
+# Arquivos de Input e Processed
+data/input/*
+data/processed/*
+
+!data/input/.gitkeep
+!data/processed/.gitkeep
+
 # Ambiente virtual
 .venv/
 venv/
 
-# Cache
+# Cache do Python
 __pycache__/
 *.py[cod]
 
@@ -12,7 +19,7 @@ __pycache__/
 # Logs
 *.log
 
-# Configurações do VS Code (opcional)
+# Configurações do VS Code
 .vscode/
 
 # Arquivos do sistema
