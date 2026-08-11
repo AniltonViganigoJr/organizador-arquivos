@@ -1,3 +1,4 @@
+import shutil
 from pathlib import Path
 
 def validar_diretorio(pasta: Path) -> None:
@@ -9,6 +10,11 @@ def listar_arquivos(pasta: Path) -> list:
     """Lista os arquivos contidos em um diretório."""
     arquivos = [str(arquivo) for arquivo in pasta.iterdir() if arquivo.is_file()]
     return arquivos
+
+def mover_arquivo(origem: Path, destino: Path) -> None:
+    """Move os arquivos para o diretório especificado"""
+    destino.mkdir(parents=True, exist_ok=True)
+    shutil.move(str(origem), str(destino))
 
 def main() -> None:
     """Ponto de entrada da automação."""
@@ -25,13 +31,19 @@ def main() -> None:
     except FileNotFoundError as erro:
         print(f"Erro: {erro}")
         raise
-
     #Listar arquivos
     arquivos = listar_arquivos(pasta=pasta_entrada)
 
     if not arquivos:
         print("Não há arquivos para processar.")
         return
+
+    try:
+        pasta_saida = Path(__file__).parent / "data" / "processed"
+        for arquivo in arquivos:
+            mover_arquivo(origem=arquivo, destino=pasta_saida)
+    except Exception as erro:
+        print(f"Erro: {erro}")
 
     for arquivo in arquivos:
         print(arquivo)
