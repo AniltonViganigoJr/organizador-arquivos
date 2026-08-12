@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from utils.arquivos import listar_arquivos, mover_arquivo, validar_diretorio
 
@@ -29,7 +28,7 @@ def main() -> None:
     try:
         pasta_saida = Path(__file__).parent.parent.parent / "data" / "processed"
         for arquivo in arquivos:
-            print(f"Movendo arquivo: {os.path.basename(arquivo)}")
+            print(f"Movendo arquivo: {arquivo.name}")
             mover_arquivo(origem=arquivo, destino=pasta_saida)
     except Exception as erro:
         print(f"Erro: {erro}")

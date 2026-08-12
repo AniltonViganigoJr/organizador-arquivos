@@ -10,7 +10,7 @@ def listar_arquivos(pasta: Path, extensao: str) -> list[Path]:
     """Lista os arquivos contidos em um diretório."""
     extensao = extensao.lower()
     arquivos = [
-        str(arquivo) for arquivo in pasta.iterdir() 
+        arquivo for arquivo in pasta.iterdir() 
         if arquivo.is_file() and arquivo.suffix.lower() == extensao
         ]
     return arquivos
