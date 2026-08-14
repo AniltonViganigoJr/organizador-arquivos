@@ -71,9 +71,6 @@ organizador-arquivos/
 -   Evitar processamento duplicado.
 -   Geração de relatórios.
 -   Notificações por e-mail.
--   Interface gráfica.
--   Integração com banco de dados.
--   Execução como serviço do sistema operacional.
 
 ## Objetivos de Aprendizado
 
@@ -85,7 +82,6 @@ Este projeto foi criado para consolidar conhecimentos em:
 -   Modularização.
 -   Tratamento de exceções.
 -   Registro de logs.
--   Testes automatizados.
 -   Versionamento com Git.
 
 ## Licença
